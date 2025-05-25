@@ -58,9 +58,9 @@ class _ShowScreenState extends State<ShowScreen> {
                 itemBuilder: (context, index) {
                   final person = Data.you[index];
                   return ListTile(
-                    title: Text('الاسم: ${person['name']}'),
+                    title: Text('الاسم: ${person.name}'),
                     subtitle: Text(
-                        'العمر: ${person['age']}, الطول: ${person['length']}, الوزن: ${person['weight']}'),
+                        'العمر: ${person.age}, الطول: ${person.length}, الوزن: ${person.weight}'),
                   );
                 },
               ),

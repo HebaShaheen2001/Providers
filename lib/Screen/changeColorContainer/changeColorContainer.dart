@@ -114,12 +114,12 @@ class _ChangecolorcontainerState extends State<Changecolorcontainer> {
               width: 60,
               text: 'اضف',
               onPressed: () {
-                final age = int.tryParse(this.age.text) ?? 0;
-                final name = this.name.text;
-                final length = int.tryParse(this.length.text) ?? 0;
-                final weight = int.tryParse(this.weight.text) ?? 0;
-
-                Data.personData(age, name, length, weight);
+                Data.personData(
+                  name.text,
+                  age.text,
+                  length.text,
+                  weight.text,
+                );
 
                 // Box.changeBox(Colors.deepOrangeAccent, 250, 250, 'القائمة',
                 //     BorderRadius.circular(0));

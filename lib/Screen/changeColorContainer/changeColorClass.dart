@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:providers/Screen/changeColorContainer/ChangeColorModle.dart';
 
 class ChangeClass extends ChangeNotifier {
   Color color = Colors.red;
@@ -19,16 +20,33 @@ class ChangeClass extends ChangeNotifier {
   }
 }
 
-class DataYou extends ChangeNotifier {
-  List<Map<String, dynamic>> you = [];
+// class DataYou extends ChangeNotifier {
+//   List<Map<String, dynamic>> you = [];
 
-  void personData(int age, String name, int length, int weight) {
-    you.add({
-      'age': age,
-      'name': name,
-      'length': length,
-      'weight': weight,
-    });
+//   void personData(int age, String name, int length, int weight) {
+//     you.add({
+//       'age': age,
+//       'name': name,
+//       'length': length,
+//       'weight': weight,
+//     });
+//     notifyListeners();
+//   }
+// }
+
+
+class DataYou extends ChangeNotifier {
+  List<ChangeColorModle> you = [];
+
+  void personData(String name, String age, String length, String weight) {
+    ChangeColorModle person = ChangeColorModle(
+      name: name,
+      age: age,
+      length: length,
+      weight: weight,
+    );
+    you.add(person);
     notifyListeners();
   }
+
 }
