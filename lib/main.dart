@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:providers/Screen/Cart/productsClass.dart';
+import 'package:providers/Screen/Cart/productsScreen.dart';
 import 'package:providers/Screen/StudentScreen/ShowStudent.dart';
 import 'package:providers/Screen/StudentScreen/languageClass.dart';
 import 'package:providers/Screen/changeColorContainer/changeColorClass.dart';
@@ -12,9 +14,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:providers/SharedPreferences/shared_preferences.dart';
 
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); 
-  await ShApp().init(); 
+  WidgetsFlutterBinding.ensureInitialized();
+  await ShApp().init();
   runApp(const MyApp());
 }
 
@@ -30,35 +31,33 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ListName()),
         ChangeNotifierProvider(create: (context) => ChangeClass()),
         ChangeNotifierProvider(create: (context) => DataYou()),
-        ChangeNotifierProvider(create: (context) {
-          final lang = LanguageClass();
-          lang.loadLanguage();
-          return lang;
-        }),
+        ChangeNotifierProvider(create: (context) => productsClass()),
+        // ChangeNotifierProvider(create: (context) {
+        //   final lang = LanguageClass();
+        //   lang.loadLanguage();
+        //   return lang;
+        // }),
       ],
-      child: Consumer<LanguageClass>(
-        builder: (context, langProvider, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            locale: Locale(langProvider.currentLang),
-            supportedLocales: const [
-              Locale('ar'),
-              Locale('en'),
-            ],
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-            ],
-            initialRoute: 'ShowStudent',
-            routes: {
-              'home_screen': (context) => const HomeTest(),
-              'ShowScreen': (context) => const ShowScreen(),
-              'Changecolorcontainer': (context) => const Changecolorcontainer(),
-              'ShowStudent': (context) => const ShowStudent(),
-            },
-          );
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        // locale: Locale(langProvider.currentLang),
+        // supportedLocales: const [
+        //   Locale('ar'),
+        //   Locale('en'),
+        // ],
+        // localizationsDelegates: const [
+        //   AppLocalizations.delegate,
+        //   GlobalCupertinoLocalizations.delegate,
+        //   GlobalWidgetsLocalizations.delegate,
+        //   GlobalMaterialLocalizations.delegate,
+        // ],
+        initialRoute: 'Productsscreen',
+        routes: {
+          'home_screen': (context) => const HomeTest(),
+          'ShowScreen': (context) => const ShowScreen(),
+          'Changecolorcontainer': (context) => const Changecolorcontainer(),
+          'ShowStudent': (context) => const ShowStudent(),
+          'Productsscreen': (context) => const Productsscreen(),
         },
       ),
     );
