@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:providers/Screen/Cart/cartClass.dart';
+import 'package:providers/Screen/Cart/cartScreen.dart';
 import 'package:providers/Screen/Cart/productsClass.dart';
 import 'package:providers/Screen/Cart/productsScreen.dart';
 import 'package:providers/Screen/StudentScreen/ShowStudent.dart';
-import 'package:providers/Screen/StudentScreen/languageClass.dart';
 import 'package:providers/Screen/changeColorContainer/changeColorClass.dart';
 import 'package:providers/Screen/changeColorContainer/changeColorContainer.dart';
 import 'package:providers/Screen/changeColorContainer/showScreen.dart';
 import 'package:providers/Screen/home_test.dart';
 import 'package:providers/Screen/incrementClass.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:providers/SharedPreferences/shared_preferences.dart';
 
 void main() async {
@@ -32,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ChangeClass()),
         ChangeNotifierProvider(create: (context) => DataYou()),
         ChangeNotifierProvider(create: (context) => productsClass()),
+        ChangeNotifierProvider(create: (context) => CartClass()),
         // ChangeNotifierProvider(create: (context) {
         //   final lang = LanguageClass();
         //   lang.loadLanguage();
@@ -58,6 +58,7 @@ class MyApp extends StatelessWidget {
           'Changecolorcontainer': (context) => const Changecolorcontainer(),
           'ShowStudent': (context) => const ShowStudent(),
           'Productsscreen': (context) => const Productsscreen(),
+          'Cartscreen': (context) => const Cartscreen(),
         },
       ),
     );
