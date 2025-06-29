@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:providers/Screen/Cart/cartClass.dart';
@@ -11,6 +13,13 @@ class Productsscreen extends StatefulWidget {
 }
 
 class _ProductsscreenState extends State<Productsscreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    log('testTest');
+  }
+
   bool isDataAdded = false;
 
   @override

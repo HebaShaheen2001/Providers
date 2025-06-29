@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:providers/Screen/Cart/cartClass.dart';
 import 'package:providers/Screen/Cart/cartScreen.dart';
@@ -14,6 +13,10 @@ import 'package:providers/Screen/home_test.dart';
 import 'package:providers/Screen/incrementClass.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+void main() {
+  runApp((MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -58,7 +61,7 @@ class AppWidget extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      initialRoute: 'Productsscreen',
+      initialRoute: 'Cartscreen',
       routes: {
         'home_screen': (context) => const HomeTest(),
         'ShowScreen': (context) => const ShowScreen(),
