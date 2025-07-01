@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:providers/Screen/Cart/cartClass.dart';
 import 'package:providers/Screen/Cart/cartScreen.dart';
+import 'package:providers/Screen/Cart/favoritesClass.dart';
+import 'package:providers/Screen/Cart/favoritesScreen.dart';
 import 'package:providers/Screen/Cart/productsClass.dart';
 import 'package:providers/Screen/Cart/productsScreen.dart';
 import 'package:providers/Screen/StudentScreen/ShowStudent.dart';
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => productsClass()),
         ChangeNotifierProvider(create: (context) => CartClass()),
         ChangeNotifierProvider(create: (context) => LanguageClass()),
+        ChangeNotifierProvider(create: (context) => favoritesClass()),
       ],
       child: AppWidget(),
     );
@@ -61,7 +64,7 @@ class AppWidget extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      initialRoute: 'Cartscreen',
+      initialRoute: 'Productsscreen',
       routes: {
         'home_screen': (context) => const HomeTest(),
         'ShowScreen': (context) => const ShowScreen(),
@@ -69,6 +72,7 @@ class AppWidget extends StatelessWidget {
         'ShowStudent': (context) => const ShowStudent(),
         'Productsscreen': (context) => const Productsscreen(),
         'Cartscreen': (context) => const Cartscreen(),
+        'favoritesScreen': (context) => const favoritesScreen(),
       },
     );
   }

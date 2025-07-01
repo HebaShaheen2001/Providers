@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class productsClass extends ChangeNotifier {
   List<productModle> productsList = [];
   List productsCart = [];
+  List productsFavorites = [];
 
   void addProducts(String name, String price, String description, bool isAdd) {
     final product = productModle(

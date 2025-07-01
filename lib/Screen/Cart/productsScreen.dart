@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:providers/Screen/Cart/cartClass.dart';
+import 'package:providers/Screen/Cart/favoritesClass.dart';
 import 'package:providers/Screen/Cart/productsClass.dart';
 
 class Productsscreen extends StatefulWidget {
@@ -27,6 +28,8 @@ class _ProductsscreenState extends State<Productsscreen> {
     final productShow = Provider.of<productsClass>(context);
     final cartProvider = Provider.of<CartClass>(context);
     final cartItems = cartProvider.cartList;
+    final favoritesProvider = Provider.of<favoritesClass>(context);
+    final favoritesItems = favoritesProvider.favoritesList;
 
     Future.delayed(Duration.zero, () {
       productShow.addProducts('name1', '100', 'description1', true);
@@ -53,6 +56,21 @@ class _ProductsscreenState extends State<Productsscreen> {
                   },
                   icon: Icon(Icons.shopping_cart_rounded)),
             ],
+          ),
+          Stack(
+            children: [
+              Container(
+                width: 20,
+                height: 20,
+                color: Colors.red,
+                child: Center(child: Text(favoritesItems.length.toString())),
+              ),
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'favoritesScreen');
+                  },
+                  icon: Icon(Icons.favorite)),
+            ],
           )
         ],
       ),
@@ -61,6 +79,7 @@ class _ProductsscreenState extends State<Productsscreen> {
         itemBuilder: (context, index) {
           final product = productShow.productsList[index];
           final isInCart = cartProvider.isInCart(product);
+          final isInFavorites = favoritesProvider.isInfavorites(product);
 
           return Container(
             padding: const EdgeInsets.all(10),
@@ -74,15 +93,32 @@ class _ProductsscreenState extends State<Productsscreen> {
                 ListTile(
                   title: Text(product.name.toString()),
                   subtitle: Text('${product.price} - ${product.description}'),
-                  trailing: IconButton(
-                    icon: Icon(
-                      isInCart
-                          ? Icons.remove_shopping_cart
-                          : Icons.add_shopping_cart,
+                  trailing: SizedBox(
+                    width: 100,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            isInCart
+                                ? Icons.remove_shopping_cart
+                                : Icons.add_shopping_cart,
+                          ),
+                          onPressed: () {
+                            cartProvider.addCart(product);
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            isInFavorites
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                          ),
+                          onPressed: () {
+                            favoritesProvider.addfavorites(product);
+                          },
+                        ),
+                      ],
                     ),
-                    onPressed: () {
-                      cartProvider.addCart(product);
-                    },
                   ),
                 ),
               ],
