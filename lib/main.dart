@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:providers/Screen/Api/Screen/homeApi.dart';
 import 'package:providers/Screen/Cart/cartClass.dart';
 import 'package:providers/Screen/Cart/cartScreen.dart';
 import 'package:providers/Screen/Cart/favoritesClass.dart';
@@ -64,7 +65,7 @@ class AppWidget extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      initialRoute: 'Productsscreen',
+      initialRoute: 'Homeapi',
       routes: {
         'home_screen': (context) => const HomeTest(),
         'ShowScreen': (context) => const ShowScreen(),
@@ -73,6 +74,7 @@ class AppWidget extends StatelessWidget {
         'Productsscreen': (context) => const Productsscreen(),
         'Cartscreen': (context) => const Cartscreen(),
         'favoritesScreen': (context) => const favoritesScreen(),
+        'Homeapi': (context) => const Homeapi(),
       },
     );
   }
